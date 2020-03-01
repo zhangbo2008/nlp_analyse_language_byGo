@@ -30,7 +30,7 @@ func getTrigramsWithPositions(text string) map[string]int {
 	}
 
 	sort.SliceStable(trigrams, func(i, j int) bool {
-		if trigrams[i].count == trigrams[j].count {
+		if trigrams[i].count == trigrams[j].count {// 如果count一样就按照字母表顺序排.
 			return strings.Compare(trigrams[i].trigram, trigrams[j].trigram) < 0
 		}
 		return trigrams[i].count < trigrams[j].count
@@ -46,6 +46,8 @@ func getTrigramsWithPositions(text string) map[string]int {
 	return trigramsWithPositions
 }
 
+
+// 返回一个字符串计数表.
 func count(text string) map[string]int {
 	var r1, r2, r3 rune
 	trigrams := map[string]int{}

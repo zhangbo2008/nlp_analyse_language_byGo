@@ -395,6 +395,7 @@ func LangToString(lang Lang) string {
 }
 
 // String returns the human-readable name of the language as a string.
+//根据id返回字符串
 func (lang Lang) String() string {
 	if val, ok := Langs[lang]; ok {
 		return val

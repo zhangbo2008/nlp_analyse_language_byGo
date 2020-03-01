@@ -5,16 +5,25 @@ import (
 	"unicode"
 )
 
+
+
+// 下面看这个nlp里面检测字符串是什么语种的代码,怎么写的
+
+//  Detect就是入口函数. 输入字符串,然后Options里面设置白名单,黑名单都是空.
+
+// 这个detect检测语言和脚本
 // Detect language and script of the given text.
 func Detect(text string) Info {
 	return DetectWithOptions(text, Options{})
 }
-
+//这个只检测语言.
 // DetectLang detects only the language by a given text.
 func DetectLang(text string) Lang {
 	return Detect(text).Lang
 }
 
+
+//这个检测带参数
 // DetectLangWithOptions detects only the language of the given text with the provided options.
 func DetectLangWithOptions(text string, options Options) Lang {
 	return DetectWithOptions(text, options).Lang

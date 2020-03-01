@@ -3,6 +3,7 @@ package whatlanggo
 import "testing"
 
 func TestCodeToLang(t *testing.T) {
+	// 设置一个map 对象.并且初始化赋值好数据.
 	tests := map[string]Lang{
 		"afr": Afr,
 		"aka": Aka,

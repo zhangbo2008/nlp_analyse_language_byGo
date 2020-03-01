@@ -39,7 +39,7 @@ var Scripts = map[*unicode.RangeTable]string{
 // DetectScript returns only the script of the given text.
 func DetectScript(text string) *unicode.RangeTable {
 	halfLen := len(text) / 2
-
+// 下面是核心函数,第一个传入函数,第二个传入一种语言的unicode码范围.第三个是count
 	scriptCounter := []scriptCounter{
 		{isLatin, unicode.Latin, 0},
 		{isCyrillic, unicode.Cyrillic, 0},
@@ -80,11 +80,14 @@ func DetectScript(text string) *unicode.RangeTable {
 
 				//if script is found, move it closer to the front so that it be checked first.
 				if i > 0 {
-					scriptCounter[i], scriptCounter[i-1] = scriptCounter[i-1], scriptCounter[i]
+					scriptCounter[i], scriptCounter[i-1] = scriptCounter[i-1], scriptCounter[i]  //交换2个元素.
 				}
 			}
 		}
 	}
+
+
+
 
 	//find the script that occurs the most in the text and return it.
 	jpCount := 0
@@ -113,6 +116,9 @@ func DetectScript(text string) *unicode.RangeTable {
 		return maxScript
 	}
 }
+
+
+
 
 var isCyrillic = func(r rune) bool {
 	return unicode.Is(unicode.Cyrillic, r)
